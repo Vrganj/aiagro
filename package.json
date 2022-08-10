@@ -15,7 +15,6 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-static": "^1.0.0-next.39",
-		"chart.js": "^3.9.1",
-		"chartjs-adapter-moment": "^1.0.0"
+		"chart.js": "^3.9.1"
 	}
 }
