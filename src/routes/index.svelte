@@ -5,7 +5,7 @@
     let chartElement;
     const data = [[], [], [], [], [], []];
 
-    let lastUpdate, airTemperature, airHumidity, soilHumidity, dust, wifiSignal;
+    let lastUpdate, airTemperature, airHumidity, soilHumidity, particles, wifiSignal;
 
     async function loadData() {
         const rows = await fetch('http://10.1.2.39:8080/data.csv?t=' + new Date().getTime())
@@ -25,7 +25,7 @@
         airTemperature = `${data[1][data[1].length - 1]}°C`;
         airHumidity = `${data[2][data[2].length - 1]}%`;
         soilHumidity = `${data[3][data[3].length - 1]}%`;
-        dust = `${data[4][data[4].length - 1]} µg/m³`
+        particles = `${data[4][data[4].length - 1]} µg/m³`
         wifiSignal = `${data[5][data[5].length - 1]}%`;
 
         const config = { 
@@ -38,7 +38,7 @@
                     {label: 'air temperature', data: data[1], backgroundColor: '#fa5137'},
                     {label: 'air humidity', data: data[2], backgroundColor: '#37f0fa'},
                     {label: 'soil humidity', data: data[3], backgroundColor: '#c28025'},
-                    {label: 'dust', data: data[4], backgroundColor: '#cccccc'},
+                    {label: 'particles', data: data[4], backgroundColor: '#cccccc'},
                     {label: 'WiFi signal', data: data[5], backgroundColor: '#ff00ff'},
                 ]
             },
@@ -128,9 +128,9 @@
         </div>
         <div class="col-md-4 mb-2">
             <div class="card p-3" style="border-left: 2px solid #cccccc !important">
-                {#if dust}
-                    <span>Dust</span>
-                    <h2 class="m-0">{dust}</h2>
+                {#if particles}
+                    <span>Particles PM10</span>
+                    <h2 class="m-0">{particles}</h2>
                 {:else}
                     <div class="text-center">
                         <div class="spinner-grow" style="width: 1rem; height: 1rem; color: #cccccc" role="status">
