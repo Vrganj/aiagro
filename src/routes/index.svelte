@@ -35,11 +35,41 @@
             data: {
                 labels: data[0],
                 datasets: [
-                    {label: 'air temperature', data: data[1], backgroundColor: '#fa5137'},
-                    {label: 'air humidity', data: data[2], backgroundColor: '#37f0fa'},
-                    {label: 'soil humidity', data: data[3], backgroundColor: '#c28025'},
-                    {label: 'particles', data: data[4], backgroundColor: '#cccccc'},
-                    {label: 'WiFi signal', data: data[5], backgroundColor: '#ff00ff'},
+                    {
+                        label: 'air temperature',
+                        data: data[1],
+                        backgroundColor: '#fa5137',
+                        borderColor: '#fa5137',
+                        borderWidth: 2,
+                    },
+                    {
+                        label: 'air humidity',
+                        data: data[2],
+                        backgroundColor: '#37f0fa',
+                        borderColor: '#37f0fa',
+                        borderWidth: 2,
+                    },
+                    {
+                        label: 'soil humidity',
+                        data: data[3],
+                        backgroundColor: '#c28025',
+                        borderColor: '#c28025',
+                        borderWidth: 2,
+                    },
+                    {
+                        label: 'particles',
+                        data: data[4],
+                        backgroundColor: '#cccccc',
+                        borderColor: '#cccccc',
+                        borderWidth: 2,
+                    },
+                    {
+                        label: 'WiFi signal',
+                        data: data[5],
+                        backgroundColor: '#ff00ff',
+                        borderColor: '#ff00ff',
+                        borderWidth: 2,
+                    },
                 ]
             },
             options: {
