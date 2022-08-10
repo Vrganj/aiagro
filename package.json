@@ -8,13 +8,13 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"svelte": "^3.44.0",
 		"vite": "^3.0.0"
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-static": "^1.0.0-next.39",
 		"chart.js": "^3.9.1",
 		"chartjs-adapter-moment": "^1.0.0"
 	}

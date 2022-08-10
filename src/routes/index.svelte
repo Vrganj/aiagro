@@ -9,7 +9,7 @@
     let lastUpdate, airTemperature, airHumidity, soilHumidity, dust;
 
     async function loadData() {
-        const rows = await fetch('http://10.1.2.39:8080/data.csv')
+        const rows = await fetch('http://10.1.2.39:8080/data.csv?t=' + new Date().getTime())
             .then(res => res.text())
             .then(res => res.trim().split('\n').map(row => row.trim().split(' ').map(parseFloat)))
             .then(res => res.slice(-16));
@@ -31,6 +31,7 @@
         const config = { 
             type: 'line',
             animation: false,
+            parsing: false,
             data: {
                 labels: data[0],
                 datasets: [
@@ -43,12 +44,10 @@
             options: {
                 scales: {
                     x: {
-                        type: 'time',
-                        time: {
-                            unit: 'millisecond',
-                            displayFormats: {
-                                millisecond: 'hh:mm:ss'
-                            }
+                        ticks: {
+                            callback: function(value) {
+                                return new Date(this.getLabelForValue(value)).toLocaleTimeString('hr');
+                            },
                         }
                     },
                     y: {
@@ -147,9 +146,10 @@
         <button type="button" class="btn" style="background-color: #e39e27">1 day</button>
         <button type="button" class="btn" style="background-color: #e39e27">1 hour</button>
     </div>-->
+    <p></p>
     <div class="row p-4">
         <div class="card">
-            <canvas bind:this={chartElement} style="height: 75vh; width: 100%"></canvas>
+            <canvas bind:this={chartElement} style="height: 50vh; width: 100%"></canvas>
         </div>
     </div>
 </div>
