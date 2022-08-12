@@ -10,8 +10,9 @@
 
     async function loadData() {
         const last = parseInt($page.url.searchParams.get('last')) || 15;
+        const dataset = $page.url.searchParams.get('dataset') || 'data';
 
-        const rows = await fetch('http://10.1.2.40:8080/data.csv?t=' + new Date().getTime())
+        const rows = await fetch(`http://10.1.2.40:8080/${dataset}.csv?t=${new Date().getTime()}`)
             .then(res => res.text())
             .then(res => res.trim().split('\n').map(row => row.trim().split(' ').map(parseFloat)))
             .then(res => res.slice(-last));
